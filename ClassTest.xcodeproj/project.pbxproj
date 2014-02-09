@@ -174,9 +174,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EE32D21A189C678C00E2DEA5 /* Build configuration list for PBXNativeTarget "ClassTest" */;
 			buildPhases = (
-				EE32D1DB189C678C00E2DEA5 /* Sources */,
 				EE32D1DC189C678C00E2DEA5 /* Frameworks */,
 				EE32D1DD189C678C00E2DEA5 /* Resources */,
+				EE32D1DB189C678C00E2DEA5 /* Sources */,
 			);
 			buildRules = (
 			);

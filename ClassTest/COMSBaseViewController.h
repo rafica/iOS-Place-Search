@@ -16,7 +16,7 @@
 
 //connect our view controllers to the UIKit items on the storyboard
 @property (strong, nonatomic) IBOutlet UITextField *inputTextField;
-@property (strong, nonatomic) IBOutlet UILabel *display;
+
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
