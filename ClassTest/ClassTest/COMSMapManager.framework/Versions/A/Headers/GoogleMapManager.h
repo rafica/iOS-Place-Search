@@ -11,12 +11,12 @@
 @interface GoogleMapManager : NSObject
 
 /*
- Returns an array of Venue Objects for a 2d lat lon, a radius (in meters) for a search query
+ Returns an array of Objects represented by NSDictionaries (JSON) for a 2d lat lon, a radius (in meters) for a search query
  The result of this query will be provided in the completion block
  
  Example query params:
  query = Mexican+food+in+New+York
- queryType = Restaurants
+ queryType = restaurant
  */
 +(void)nearestVenuesForLatLong:(CLLocationCoordinate2D)latLong withinRadius:(double)radius forQuery:(NSString *)query queryType:(NSString *)type googleMapsAPIKey:(NSString *)apiKey searchCompletion:(void (^)(NSMutableArray *results))completionHandler;
 

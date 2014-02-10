@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A598" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="CWU-tu-t10">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Search View Controller-->
+        <scene sceneID="1kO-ch-J3h">
+            <objects>
+                <viewController id="ZUq-oB-DCN" customClass="SearchViewController" sceneMemberID="viewController">
+                    <view key="view" tag="1" contentMode="scaleToFill" id="9Og-Vv-Y9q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3n9-ea-pRf">
+                                <rect key="frame" x="92" y="271" width="120" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.34809669101155061" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
+                                <size key="titleShadowOffset" width="7" height="6"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateLabelPressed:" destination="TgB-gt-1zX" eventType="touchUpInside" id="X5E-vE-8VB"/>
+                                    <segue destination="TgB-gt-1zX" kind="push" id="iqQ-2Z-RPf"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Enter here" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="43" clearButtonMode="whileEditing" id="fNO-hw-csr">
+                                <rect key="frame" x="52" y="200" width="217" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.98971619897959184" green="0.97727350845056316" blue="0.85040985532421509" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="0.44999999999999996" height="1"/>
+                                <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1879020712522419" green="0.84239130434782605" blue="0.7214554040005754" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="0.98742802174819688" blue="0.85924617198445064" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PUt-V6-4vT"/>
+                    <connections>
+                        <outlet property="inputTextField" destination="fNO-hw-csr" id="W2n-WM-EQ2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PJd-Ib-rOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-101" y="-573"/>
+        </scene>
+        <!--Base View Controller-->
+        <scene sceneID="8dE-Z6-chl">
+            <objects>
+                <viewController id="TgB-gt-1zX" customClass="COMSBaseViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sIf-AZ-2MJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="1pm-Hp-mK8">
+                                <rect key="frame" x="40" y="204" width="240" height="298"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="OsS-lU-VgT" appends="YES" id="4Mp-dy-aBK"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="v91-hP-J8q"/>
+                    <connections>
+                        <outlet property="inputTextField" destination="fNO-hw-csr" id="b6D-3f-L4e"/>
+                        <outlet property="mapView" destination="1pm-Hp-mK8" id="jat-DB-qfO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HYj-bW-cXu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="OsS-lU-VgT">
+                    <connections>
+                        <action selector="screenTapped:" destination="TgB-gt-1zX" id="5N1-9c-clb"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="353" y="-403"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="po1-ZH-2R5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CWU-tu-t10" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TE9-SG-ciR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZUq-oB-DCN" kind="relationship" relationship="rootViewController" id="ljM-2l-iL4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dNV-EQ-VyB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-617" y="-592"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
