@@ -13,6 +13,7 @@
 		218D9D3218A6F0FC000A1796 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D3118A6F0FC000A1796 /* CoreData.framework */; };
 		218D9D3418A6F192000A1796 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D3318A6F192000A1796 /* CoreLocation.framework */; };
 		218D9D3618A6F1B7000A1796 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D3518A6F1B7000A1796 /* MapKit.framework */; };
+		218EBED218A8380200D1D996 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 218EBED118A8380200D1D996 /* MapPin.m */; };
 		EE32D1E5189C678C00E2DEA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE32D1E4189C678C00E2DEA5 /* CoreGraphics.framework */; };
 		EE32D1EF189C678C00E2DEA5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EE32D1ED189C678C00E2DEA5 /* InfoPlist.strings */; };
 		EE32D1F1189C678C00E2DEA5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE32D1F0189C678C00E2DEA5 /* main.m */; };
@@ -43,6 +44,8 @@
 		218D9D3118A6F0FC000A1796 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		218D9D3318A6F192000A1796 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		218D9D3518A6F1B7000A1796 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		218EBED018A8380200D1D996 /* MapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPin.h; sourceTree = "<group>"; };
+		218EBED118A8380200D1D996 /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
 		EE32D1DF189C678C00E2DEA5 /* ClassTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE32D1E4189C678C00E2DEA5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		EE32D1EC189C678C00E2DEA5 /* ClassTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ClassTest-Info.plist"; sourceTree = "<group>"; };
@@ -134,6 +137,8 @@
 				EE32D1EB189C678C00E2DEA5 /* Supporting Files */,
 				EE32D226189C778B00E2DEA5 /* COMSBaseViewController.h */,
 				EE32D227189C778B00E2DEA5 /* COMSBaseViewController.m */,
+				218EBED018A8380200D1D996 /* MapPin.h */,
+				218EBED118A8380200D1D996 /* MapPin.m */,
 			);
 			path = ClassTest;
 			sourceTree = "<group>";
@@ -266,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE32D1FB189C678C00E2DEA5 /* ClassTest.xcdatamodeld in Sources */,
+				218EBED218A8380200D1D996 /* MapPin.m in Sources */,
 				EE32D1F5189C678C00E2DEA5 /* COMSAppDelegate.m in Sources */,
 				EE32D1F1189C678C00E2DEA5 /* main.m in Sources */,
 				EE32D228189C778B00E2DEA5 /* COMSBaseViewController.m in Sources */,
