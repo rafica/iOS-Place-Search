@@ -9,6 +9,8 @@
 #import "COMSBaseViewController.h"
 #import <COMSMapManager/COMSMapManager.h>
 #import "SearchViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
 @interface COMSBaseViewController ()
 
 //private location manager
@@ -45,9 +47,30 @@
     NSLog(@"viewdidload");
 
     NSLog(@"%@",self.place);
+
+    //UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    //label.backgroundColor = [UIColor clearColor];
+    //label.font = [UIFont boldSystemFontOfSize:20.0];
+   // label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    //label.textAlignment = NSTextAlignmentCenter;
+    // ^-Use UITextAlignmentCenter for older SDKs.
+    //label.textColor = [UIColor blackColor]; // change this color
+    //self.navigationItem.titleView = label;
+    //label.text = @"Nearby Places";
+
+    //[label sizeToFit];
     
+    [[UIBarButtonItem appearance] setTintColor:[UIColor redColor]];
+    
+    self.mapView.layer.borderWidth = 2.0;
+    self.mapView.layer.borderColor = [[UIColor blackColor]CGColor];
     [self removeMapViewAnnotations];
+    self.background2.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"brick-300x266.png"]];
     
+    self.mapView.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.mapView.layer.shadowOpacity = 0.5;
+    self.mapView.layer.shadowRadius = 3;
+    self.mapView.layer.shadowOffset = CGSizeMake(3.0f, 2.0f);
     
     //self.place = @"Chipotle";
     //we must subscribe as the delegate to the location manager
@@ -55,6 +78,7 @@
     
     //go ahead and start reading locations. The updates will come through the delegate methods
     [self.locationManager startUpdatingLocation];
+    
     
     //make ourselves the delegate of the textfield so we can be notified of changes by it
     
@@ -66,6 +90,7 @@
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
 
     firstLaunch = YES;
+        
 
 }
 
@@ -76,7 +101,7 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     
     NSLog(@"didupdatelocations");
-    
+    [self.locationManager stopUpdatingLocation];    
     //self.place = @"Chipotle";
     //extract the 2d coordinate for better readability
     CLLocation *loc = locations[0];
@@ -88,10 +113,10 @@
     //query server for results
     //disabled because without API key, it will crash
     
-    [GoogleMapManager nearestVenuesForLatLong:coord withinRadius:1200 forQuery:self.place queryType:@"Restaurant+hotel" googleMapsAPIKey:@"AIzaSyDTxgToUPNt4Jm0yafQPaAXP_fiYXyMKiQ" searchCompletion:^(NSMutableArray *results) {
+    [GoogleMapManager nearestVenuesForLatLong:coord withinRadius:1200 forQuery:self.place queryType:@"" googleMapsAPIKey:@"AIzaSyDTxgToUPNt4Jm0yafQPaAXP_fiYXyMKiQ" searchCompletion:^(NSMutableArray *results) {
         
         [self plotPositions:results];
-        
+        NSLog(@"plotted");
         
     
     }];
@@ -226,6 +251,10 @@
  Actions when a certain view is tapped. In this case we added this recognizer to the main view (self.view) so that the keyboard will dismiss when the screen is tapped
  */
 
+-(IBAction)screenTapped:(UITapGestureRecognizer *)sender {
+    NSLog(@"screentapped");
+    
+}
 
 
 

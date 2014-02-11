@@ -27,5 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic, strong) NSString *place;
+@property (strong, nonatomic) IBOutlet UIView *background2;
+
 
 @end

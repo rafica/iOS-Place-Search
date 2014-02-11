@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *inputTextField;
 
+@property (strong, nonatomic) IBOutlet UIView *background;
+@property (weak, nonatomic) IBOutlet UIButton *searchButton;
 
 @end
