@@ -10,7 +10,11 @@
 #import "COMSBaseViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface SearchViewController ()
+@interface SearchViewController (){
+
+    UIAlertView *alert;
+
+}
 
 
 @end
@@ -29,9 +33,46 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 
-    [self.inputTextField.layer setCornerRadius:7.0f];
-    [self.inputTextField setBackgroundColor:[UIColor colorWithRed:246.0/255.0 green:204.0/255.0 blue:191.0/255.0 alpha:1.0]];
+   
+    [self.inputTextField.layer setCornerRadius:10.0f];
+    [self.inputTextField setBackgroundColor:[UIColor colorWithRed:191.0/255.0 green:157.0/255.0 blue:145.0/255.0 alpha:1.0]];
+    
+    CAShapeLayer* shadowLayer = [CAShapeLayer layer];
+    [shadowLayer setFrame:self.inputTextField.bounds];
+    
+    // Standard shadow stuff
+    [shadowLayer setShadowColor:[[UIColor blackColor] CGColor]];
+    [shadowLayer setShadowOffset:CGSizeMake(0.0f, 0.0f)];
+    [shadowLayer setShadowOpacity:1.0f];
+    [shadowLayer setShadowRadius:4];
+    
+    // Causes the inner region in this example to NOT be filled.
+    [shadowLayer setFillRule:kCAFillRuleEvenOdd];
+    
+    // Create the larger rectangle path.
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathAddRect(path, NULL, CGRectInset(self.inputTextField.bounds, -42, -42));
+    
+    // Add the inner path so it's subtracted from the outer path.
+    // someInnerPath could be a simple bounds rect, or maybe
+    // a rounded one for some extra fanciness.
+    CGPathRef someInnerPath = [UIBezierPath bezierPathWithRoundedRect:self.inputTextField.bounds cornerRadius:10.0f].CGPath;
+    CGPathAddPath(path, NULL, someInnerPath);
+    CGPathCloseSubpath(path);
+    
+    [shadowLayer setPath:path];
+    CGPathRelease(path);
+    
+    [[self.inputTextField layer] addSublayer:shadowLayer];
+    
+    CAShapeLayer* maskLayer = [CAShapeLayer layer];
+    [maskLayer setPath:someInnerPath];
+    [shadowLayer setMask:maskLayer];
+    
+    
+    
     
     self.searchButton.layer.shadowColor = [UIColor blackColor].CGColor;
     self.searchButton.layer.shadowOpacity = 0.5;
@@ -53,6 +94,7 @@
     [self.view addGestureRecognizer:tap];
 
 }
+
 
 -(void)setBgColorForButton:(UIButton*)sender
 {
@@ -81,11 +123,31 @@
     //do something
     
 }
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    if([self.inputTextField.text isEqualToString:@""]){
+        [self showAlert];
+        return NO;
+    }
+    return YES;
+}
+
+-(void) showAlert {
+    alert = [[UIAlertView alloc] initWithTitle:@"Query empty" message:@"" delegate:self cancelButtonTitle:nil otherButtonTitles: nil];
+    [alert show];
+    [self dismissAlert];
+    //[alert dismissWithClickedButtonIndex:0 animated:TRUE];
+}
+-(void)dismissAlert  {
+    [self performSelector:@selector(dismissAlertView:) withObject:alert afterDelay:1];
+}
+-(void)dismissAlertView:(UIAlertView *)alertView{
+    [alertView dismissWithClickedButtonIndex:0 animated:YES];
+}
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     COMSBaseViewController * mapObj = ( COMSBaseViewController * )segue.destinationViewController;
-    
+   
     //next pass the data that the user has just inputted through the AddNewPresent_View.
     mapObj.place = self.inputTextField.text;
 }

@@ -128,34 +128,7 @@
 
 
 
-#pragma mark - UITextField delegate methods
-/*
- Called by the textfield right before the text changes, great place to call a network for requests, etc... Here we'll use it to change the coor of the screen
- */
-/*
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    
-    //init colorseed in case the string length = 0
-    char colorSeed = '\0';
 
-    //if valid length, just grab the first character to seed our rgb value
-    if (string.length>0) {
-        colorSeed = [string characterAtIndex:0];
-    }
-    
-    //generate random value between 0 and 255
-    double blueValue = arc4random()%255;
-    
-    //create a color using rgb. Our R and B values come from the text and a random number
-    UIColor *viewColor = [UIColor colorWithRed:colorSeed/255.0f green:0.0/255.0f blue:blueValue/255.0f alpha:1.0f];
-    
-    //apply the color to our view
-    self.view.backgroundColor = viewColor;
-    
-    //I'm done, go ahead and make the change (if you say No, textfield won't change)
-    return YES;
-}
-*/
 #pragma mark - IBActions
 
 
@@ -216,21 +189,7 @@
 }
 
 
-/*
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-    
-    //Get the east and west points on the map so we calculate the distance (zoom level) of the current map view.
-    MKMapRect mRect = self.mapView.visibleMapRect;
-    MKMapPoint eastMapPoint = MKMapPointMake(MKMapRectGetMinX(mRect), MKMapRectGetMidY(mRect));
-    MKMapPoint westMapPoint = MKMapPointMake(MKMapRectGetMaxX(mRect), MKMapRectGetMidY(mRect));
-    
-    //Set our current distance instance variable.
-    currenDist = MKMetersBetweenMapPoints(eastMapPoint, westMapPoint);
-    
-    //Set our current centre point on the map instance variable.
-    currentCentre = self.mapView.centerCoordinate;
-}
-*/
+
 
 
 -(void)removeMapViewAnnotations{
