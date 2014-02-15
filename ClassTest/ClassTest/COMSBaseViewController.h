@@ -16,7 +16,7 @@
 //here between the <> we dictate what protocols we will implement. If we don't import the class that has that protocol declared, this won't work
 
 
-@interface COMSBaseViewController : UIViewController<CLLocationManagerDelegate>
+@interface COMSBaseViewController : UIViewController<CLLocationManagerDelegate,MKMapViewDelegate>
 {
     BOOL firstLaunch;
     int currenDist;

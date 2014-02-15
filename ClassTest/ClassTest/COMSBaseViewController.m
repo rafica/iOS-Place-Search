@@ -10,13 +10,16 @@
 #import <COMSMapManager/COMSMapManager.h>
 #import "SearchViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "DetailViewController.h"
 
-@interface COMSBaseViewController ()
+@interface COMSBaseViewController (){
+    UIAlertView *alert;
+}
 
 //private location manager
 @property (nonatomic, strong)CLLocationManager *locationManager;
 
-//@property SearchViewController *searchObj;
+
 @end
 
 
@@ -44,9 +47,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"viewdidload");
 
-    NSLog(@"%@",self.place);
 
     //UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
     //label.backgroundColor = [UIColor clearColor];
@@ -62,7 +63,7 @@
     
     [[UIBarButtonItem appearance] setTintColor:[UIColor redColor]];
     
-    self.mapView.layer.borderWidth = 2.0;
+    self.mapView.layer.borderWidth = 1.0;
     self.mapView.layer.borderColor = [[UIColor blackColor]CGColor];
     [self removeMapViewAnnotations];
     self.background2.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"brick-300x266.png"]];
@@ -80,8 +81,8 @@
     [self.locationManager startUpdatingLocation];
     
     
-    //make ourselves the delegate of the textfield so we can be notified of changes by it
-    
+    //make ourselves the delegate of the mapview so we can be notified of changes by it
+    self.mapView.delegate = self;
     
     self.mapView.showsUserLocation = YES;
 	// Do any additional setup after loading the view.
@@ -99,8 +100,7 @@
  Automatically called by location manager because we are it's delegate
  */
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    
-    NSLog(@"didupdatelocations");
+
     [self.locationManager stopUpdatingLocation];    
     //self.place = @"Chipotle";
     //extract the 2d coordinate for better readability
@@ -115,18 +115,26 @@
     
     [GoogleMapManager nearestVenuesForLatLong:coord withinRadius:1200 forQuery:self.place queryType:@"" googleMapsAPIKey:@"AIzaSyDTxgToUPNt4Jm0yafQPaAXP_fiYXyMKiQ" searchCompletion:^(NSMutableArray *results) {
         
-        [self plotPositions:results];
-        NSLog(@"plotted");
-        
+
+        if(!results||!results.count){
+            //[self showAlert];
+            
+            alert= [[UIAlertView alloc] initWithTitle:@"No nearby places" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            NSLog(@"alert");
+            [alert show];
+            
+            // NOT GETTING CALLED!!!!!!!!!!
+            
+        }
+        else{
+            [self plotPositions:results];
+        }
+
     
     }];
     
     
 }
-
-
-
-
 
 
 #pragma mark - IBActions
@@ -150,30 +158,52 @@
         // Set the lat and long.
         placeCoord.latitude=[[loc objectForKey:@"lat"] doubleValue];
         placeCoord.longitude=[[loc objectForKey:@"lng"] doubleValue];
-        // 5 - Create a new annotation.
-        MapPin *placeObject = [[MapPin alloc] initWithName:name address:vicinity coordinate:placeCoord];
+        NSNumber *ratingn = [places objectForKey:@"rating"];
+        //get the number for rating and convert to string format
+        NSString *rating = [ratingn stringValue];
+        
+        
+        NSArray *typeArray = [places objectForKey:@"types"];
+        NSString *type = typeArray[0];
+        
+        NSDictionary *photoDict = [[places objectForKey:@"photos"] objectAtIndex:0];
+        NSString *photoRef = [photoDict objectForKey:@"photo_reference"];
+        NSString *url;
+        if(photoRef){
+            url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?photoreference=%@&key=%@&sensor=false&maxwidth=320", photoRef, @"AIzaSyDTxgToUPNt4Jm0yafQPaAXP_fiYXyMKiQ"];
+            
+        }
+        else{
+            url = NULL;
+        }
+        
+        //NSLog(@"%@",type);
+        //NSLog(@"%@",rating);
+        
+        //Create a new annotation.
+        MapPin *placeObject = [[MapPin alloc] initWithName:name address:vicinity coordinate:placeCoord type:type rating:rating url:url];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.mapView addAnnotation:placeObject];
         });
         
     }
-    
-    
-    
-    
+   
 }
+
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     
     //Define our reuse indentifier.
     static NSString *identifier = @"MapPoint";
-    
-    
+   
     if ([annotation isKindOfClass:[MapPin class]]) {
         
         MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (annotationView == nil) {
             annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+            UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            annotationView.rightCalloutAccessoryView = rightButton;
         } else {
             annotationView.annotation = annotation;
         }
@@ -192,16 +222,15 @@
 
 
 
--(void)removeMapViewAnnotations{
-    
-    NSLog(@"updateLabel-removing annotations");
+-(void)removeMapViewAnnotations{    
+
     
     NSInteger toRemoveCount = self.mapView.annotations.count;
     NSMutableArray *toRemove = [NSMutableArray arrayWithCapacity:toRemoveCount];
     for (id annotation in self.mapView.annotations)
-        
         if (annotation!= self.mapView.userLocation)
             [toRemove addObject:annotation];
+    
     [self.mapView removeAnnotations:toRemove];
 }
 
@@ -210,15 +239,32 @@
  Actions when a certain view is tapped. In this case we added this recognizer to the main view (self.view) so that the keyboard will dismiss when the screen is tapped
  */
 
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
+calloutAccessoryControlTapped:(UIControl *)control
+{
+    [self performSegueWithIdentifier:@"Details" sender:view];
+
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Details"])
+    {
+        DetailViewController *detailObj = ( DetailViewController * )segue.destinationViewController;
+        MKAnnotationView *annotationView = sender;
+        MapPin *annView =annotationView.annotation;
+        detailObj.name = annView.name;
+        detailObj.vicinity = annView.address;
+        detailObj.type = annView.type;
+        detailObj.rating = annView.rating;
+        detailObj.url = annView.url;
+    }
+}
+
 -(IBAction)screenTapped:(UITapGestureRecognizer *)sender {
     NSLog(@"screentapped");
     
 }
-
-
-
-
-
 
 
 @end

@@ -14,6 +14,7 @@
 		218D9D3418A6F192000A1796 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D3318A6F192000A1796 /* CoreLocation.framework */; };
 		218D9D3618A6F1B7000A1796 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D3518A6F1B7000A1796 /* MapKit.framework */; };
 		218EBED218A8380200D1D996 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 218EBED118A8380200D1D996 /* MapPin.m */; };
+		218F14C218AEE7A400AF0FB3 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F14C118AEE7A400AF0FB3 /* DetailViewController.m */; };
 		21910EC118A8C60100F2F827 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21910EC018A8C60100F2F827 /* SearchViewController.m */; };
 		EE32D1E5189C678C00E2DEA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE32D1E4189C678C00E2DEA5 /* CoreGraphics.framework */; };
 		EE32D1EF189C678C00E2DEA5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EE32D1ED189C678C00E2DEA5 /* InfoPlist.strings */; };
@@ -47,6 +48,8 @@
 		218D9D3518A6F1B7000A1796 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		218EBED018A8380200D1D996 /* MapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPin.h; sourceTree = "<group>"; };
 		218EBED118A8380200D1D996 /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
+		218F14C018AEE7A400AF0FB3 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		218F14C118AEE7A400AF0FB3 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		21910EBF18A8C60100F2F827 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		21910EC018A8C60100F2F827 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		EE32D1DF189C678C00E2DEA5 /* ClassTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +147,8 @@
 				218EBED118A8380200D1D996 /* MapPin.m */,
 				21910EBF18A8C60100F2F827 /* SearchViewController.h */,
 				21910EC018A8C60100F2F827 /* SearchViewController.m */,
+				218F14C018AEE7A400AF0FB3 /* DetailViewController.h */,
+				218F14C118AEE7A400AF0FB3 /* DetailViewController.m */,
 			);
 			path = ClassTest;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				EE32D1F1189C678C00E2DEA5 /* main.m in Sources */,
 				21910EC118A8C60100F2F827 /* SearchViewController.m in Sources */,
 				EE32D228189C778B00E2DEA5 /* COMSBaseViewController.m in Sources */,
+				218F14C218AEE7A400AF0FB3 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

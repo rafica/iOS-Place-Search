@@ -15,14 +15,20 @@
     NSString *_name;
     NSString *_address;
     CLLocationCoordinate2D _coordinate;
+    NSString *_type;
+    NSString *_rating;
+    NSString *_url;
     
 }
 
 @property (copy) NSString *name;
 @property (copy) NSString *address;
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (copy) NSString *type;
+@property (copy) NSString *rating;
+@property (copy) NSString *url;
 
 
-- (id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate;
+- (id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate type:(NSString*)type rating:(NSString*)rating url:(NSString*)url;
 
 @end

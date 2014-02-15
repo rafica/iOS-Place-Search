@@ -11,12 +11,16 @@
 @synthesize name = _name;
 @synthesize address = _address;
 @synthesize coordinate = _coordinate;
+@synthesize url = _url;
 
--(id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate  {
+-(id)initWithName:(NSString*)name address:(NSString*)address coordinate:(CLLocationCoordinate2D)coordinate type:(NSString *)type rating:(NSString *)rating url:(NSString *)url{
     if ((self = [super init])) {
         _name = [name copy];
         _address = [address copy];
         _coordinate = coordinate;
+        _rating = [rating copy];
+        _type = [type copy];
+        _url = [url copy];
         
     }
     return self;
