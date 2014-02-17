@@ -16,9 +16,13 @@
 @property NSString *url;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameDetail;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ratingLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageDetail;
+@property (weak, nonatomic) IBOutlet UILabel *ratingDetail;
 @property (weak, nonatomic) IBOutlet UILabel *addressDetail;
 @property (weak, nonatomic) IBOutlet UILabel *typeDetail;
-@property (weak, nonatomic) IBOutlet UILabel *ratingDetail;
-@property (weak, nonatomic) IBOutlet UIImageView *imageDetail;
+
 
 @end

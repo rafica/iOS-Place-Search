@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		218D9D2C18A6EFEE000A1796 /* COMSMapManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D2B18A6EFEE000A1796 /* COMSMapManager.framework */; };
 		218D9D2E18A6F0AF000A1796 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D2D18A6F0AF000A1796 /* UIKit.framework */; };
 		218D9D3018A6F0F2000A1796 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D2F18A6F0F2000A1796 /* Foundation.framework */; };
 		218D9D3218A6F0FC000A1796 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D3118A6F0FC000A1796 /* CoreData.framework */; };
@@ -15,6 +14,7 @@
 		218D9D3618A6F1B7000A1796 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D3518A6F1B7000A1796 /* MapKit.framework */; };
 		218EBED218A8380200D1D996 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 218EBED118A8380200D1D996 /* MapPin.m */; };
 		218F14C218AEE7A400AF0FB3 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F14C118AEE7A400AF0FB3 /* DetailViewController.m */; };
+		218F67C518B0244200085A19 /* COMSMapManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218F67C418B0244200085A19 /* COMSMapManager.framework */; };
 		21910EC118A8C60100F2F827 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21910EC018A8C60100F2F827 /* SearchViewController.m */; };
 		EE32D1E5189C678C00E2DEA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE32D1E4189C678C00E2DEA5 /* CoreGraphics.framework */; };
 		EE32D1EF189C678C00E2DEA5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EE32D1ED189C678C00E2DEA5 /* InfoPlist.strings */; };
@@ -40,7 +40,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		218D9D2B18A6EFEE000A1796 /* COMSMapManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = COMSMapManager.framework; sourceTree = "<group>"; };
 		218D9D2D18A6F0AF000A1796 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		218D9D2F18A6F0F2000A1796 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		218D9D3118A6F0FC000A1796 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -50,6 +49,7 @@
 		218EBED118A8380200D1D996 /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
 		218F14C018AEE7A400AF0FB3 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		218F14C118AEE7A400AF0FB3 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		218F67C418B0244200085A19 /* COMSMapManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = COMSMapManager.framework; sourceTree = "<group>"; };
 		21910EBF18A8C60100F2F827 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		21910EC018A8C60100F2F827 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		EE32D1DF189C678C00E2DEA5 /* ClassTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,7 +82,7 @@
 				218D9D3218A6F0FC000A1796 /* CoreData.framework in Frameworks */,
 				218D9D3018A6F0F2000A1796 /* Foundation.framework in Frameworks */,
 				218D9D2E18A6F0AF000A1796 /* UIKit.framework in Frameworks */,
-				218D9D2C18A6EFEE000A1796 /* COMSMapManager.framework in Frameworks */,
+				218F67C518B0244200085A19 /* COMSMapManager.framework in Frameworks */,
 				EE32D1E5189C678C00E2DEA5 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,12 +120,12 @@
 		EE32D1E1189C678C00E2DEA5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				218F67C418B0244200085A19 /* COMSMapManager.framework */,
 				218D9D3518A6F1B7000A1796 /* MapKit.framework */,
 				218D9D3318A6F192000A1796 /* CoreLocation.framework */,
 				218D9D3118A6F0FC000A1796 /* CoreData.framework */,
 				218D9D2F18A6F0F2000A1796 /* Foundation.framework */,
 				218D9D2D18A6F0AF000A1796 /* UIKit.framework */,
-				218D9D2B18A6EFEE000A1796 /* COMSMapManager.framework */,
 				EE32D1E4189C678C00E2DEA5 /* CoreGraphics.framework */,
 				EE32D209189C678C00E2DEA5 /* XCTest.framework */,
 			);
@@ -418,6 +418,7 @@
 					/Users/waf04/Desktop/ClassTest,
 					/Users/waf04/Desktop/ClassTest/ClassTest,
 					/Users/rafica/Downloads/ClassTest,
+					"/Users/rafica/Downloads/ClassTest\\ 3",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ClassTest/ClassTest-Prefix.pch";
@@ -437,6 +438,7 @@
 					/Users/waf04/Desktop/ClassTest,
 					/Users/waf04/Desktop/ClassTest/ClassTest,
 					/Users/rafica/Downloads/ClassTest,
+					"/Users/rafica/Downloads/ClassTest\\ 3",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ClassTest/ClassTest-Prefix.pch";

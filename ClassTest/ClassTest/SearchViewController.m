@@ -149,7 +149,10 @@
     COMSBaseViewController * mapObj = ( COMSBaseViewController * )segue.destinationViewController;
    
     //next pass the data that the user has just inputted through the AddNewPresent_View.
-    mapObj.place = self.inputTextField.text;
+    NSString* escapedUrlString =
+    [self.inputTextField.text stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding];
+    
+    mapObj.place = escapedUrlString;
 }
 -(void)dismissKeyboard{
     [self.inputTextField resignFirstResponder];

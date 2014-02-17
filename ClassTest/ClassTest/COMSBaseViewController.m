@@ -246,6 +246,7 @@ calloutAccessoryControlTapped:(UIControl *)control
     [self performSegueWithIdentifier:@"Details" sender:view];
 
 }
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Details"])
@@ -263,10 +264,7 @@ calloutAccessoryControlTapped:(UIControl *)control
 
 -(IBAction)screenTapped:(UITapGestureRecognizer *)sender {
     NSLog(@"screentapped");
-    
 }
-
-
 @end
 
 

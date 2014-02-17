@@ -33,8 +33,36 @@
     self.addressDetail.text = self.vicinity;
     self.typeDetail.text = self.type;
     if (self.rating) {
-        self.ratingDetail.text =[NSString stringWithFormat:@"Rating : %@",self.rating ];
+        self.ratingDetail.text = self.rating;
+        self.ratingDetail.font= [UIFont fontWithName:@"Futura-Medium" size:17];
     }
+    else{
+        self.ratingDetail.font = [UIFont fontWithName:@"Futura-MediumItalic" size:17];
+        self.ratingDetail.text = @"No rating";
+ 
+    }
+    
+    if(self.vicinity) {
+        self.addressDetail.text = self.vicinity;
+        self.addressDetail.font= [UIFont fontWithName:@"Futura-Medium" size:17];
+    }
+    else{
+        self.addressDetail.font = [UIFont fontWithName:@"Futura-MediumItalic" size:17];
+        self.addressDetail.text = @"No details";
+        
+    }
+    if(self.type){
+        self.type = [self.type stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+        self.type = [self.type stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[self.type substringToIndex:1] uppercaseString]];
+        self.typeDetail.text = self.type;
+        self.typeDetail.font= [UIFont fontWithName:@"Futura-Medium" size:17];
+    }
+    else{
+        self.typeDetail.font = [UIFont fontWithName:@"Futura-MediumItalic" size:17];
+        self.typeDetail.text = @"No details";
+    }
+
+    
     
     
     NSLog(@"%@",self.rating);
