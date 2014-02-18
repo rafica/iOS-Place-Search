@@ -32,6 +32,9 @@
     self.nameDetail.text = self.name;
     self.addressDetail.text = self.vicinity;
     self.typeDetail.text = self.type;
+    
+    
+    //if any of the info is unavailable then its displayed in italics
     if (self.rating) {
         self.ratingDetail.text = self.rating;
         self.ratingDetail.font= [UIFont fontWithName:@"Futura-Medium" size:17];
@@ -62,18 +65,12 @@
         self.typeDetail.text = @"No details";
     }
 
-    
-    
-    
-    NSLog(@"%@",self.rating);
 
-    
+    //getting image and applying shadow
     if(self.url){
         NSURL *url = [NSURL URLWithString:self.url];
         NSData *data = [NSData dataWithContentsOfURL:url];
         UIImage *img = [[UIImage alloc] initWithData:data];
-        //CGSize size = img.size;
-        //[self.imageDetail setImage:img];
         
         CGRect rect = CGRectMake(0,0,160,130);
         UIGraphicsBeginImageContext( rect.size );

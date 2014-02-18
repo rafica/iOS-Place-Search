@@ -11,6 +11,7 @@
 #import "SearchViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "DetailViewController.h"
+#import <MapKit/MapKit.h>
 
 @interface COMSBaseViewController (){
     UIAlertView *alert;
@@ -49,31 +50,26 @@
     [super viewDidLoad];
 
 
-    //UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-    //label.backgroundColor = [UIColor clearColor];
-    //label.font = [UIFont boldSystemFontOfSize:20.0];
-   // label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-    //label.textAlignment = NSTextAlignmentCenter;
-    // ^-Use UITextAlignmentCenter for older SDKs.
-    //label.textColor = [UIColor blackColor]; // change this color
-    //self.navigationItem.titleView = label;
-    //label.text = @"Nearby Places";
-
-    //[label sizeToFit];
     
     [[UIBarButtonItem appearance] setTintColor:[UIColor redColor]];
     
     self.mapView.layer.borderWidth = 1.0;
     self.mapView.layer.borderColor = [[UIColor blackColor]CGColor];
+    
+    //before loading remove all the pins
     [self removeMapViewAnnotations];
+    
+    //set background image
     self.background2.backgroundColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"brick-300x266.png"]];
     
+    
+    //tried shadow for map.( for some reason not working)
     self.mapView.layer.shadowColor = [UIColor blackColor].CGColor;
     self.mapView.layer.shadowOpacity = 0.5;
     self.mapView.layer.shadowRadius = 3;
     self.mapView.layer.shadowOffset = CGSizeMake(3.0f, 2.0f);
     
-    //self.place = @"Chipotle";
+
     //we must subscribe as the delegate to the location manager
     self.locationManager.delegate = self;
     
@@ -81,18 +77,25 @@
     [self.locationManager startUpdatingLocation];
     
     
-    //make ourselves the delegate of the mapview so we can be notified of changes by it
+    //make ourselves the delegate of the mapview so we can be notified of changes by it ( view for annotation gets called)
     self.mapView.delegate = self;
     
     self.mapView.showsUserLocation = YES;
-	// Do any additional setup after loading the view.
     
     [self.locationManager setDistanceFilter:kCLDistanceFilterNone];
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
 
-    firstLaunch = YES;
-        
+    //slider to change the range
+   [self.rangeSlider addTarget:self action:@selector(mySliderChanged:) forControlEvents:UIControlEventValueChanged];
 
+}
+
+//selector function called when slider value changes
+
+-(void)mySliderChanged:(UISlider*)slider{
+    self.range = slider.value;
+    self.labelRange.text = [[NSString alloc] initWithFormat:@"%d meters", (int)slider.value];
+    [self.locationManager startUpdatingLocation];
 }
 
 #pragma mark - Core location
@@ -102,55 +105,43 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
 
     [self.locationManager stopUpdatingLocation];    
-    //self.place = @"Chipotle";
+
     //extract the 2d coordinate for better readability
     CLLocation *loc = locations[0];
     CLLocationCoordinate2D coord = loc.coordinate;
-    
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coord, 2500, 2500);
+
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coord, self.range*2, self.range*2);
     [self.mapView setRegion:region animated:YES];
     
     //query server for results
-    //disabled because without API key, it will crash
-    
-    [GoogleMapManager nearestVenuesForLatLong:coord withinRadius:1200 forQuery:self.place queryType:@"" googleMapsAPIKey:@"AIzaSyDTxgToUPNt4Jm0yafQPaAXP_fiYXyMKiQ" searchCompletion:^(NSMutableArray *results) {
-        
-
+ 
+    [GoogleMapManager nearestVenuesForLatLong:coord withinRadius:self.range forQuery:self.place queryType:@"" googleMapsAPIKey:@"AIzaSyDTxgToUPNt4Jm0yafQPaAXP_fiYXyMKiQ" searchCompletion:^(NSMutableArray *results) {
+        //if no results show Alert. else plot in the map
         if(!results||!results.count){
-            //[self showAlert];
-            
             alert= [[UIAlertView alloc] initWithTitle:@"No nearby places" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            NSLog(@"alert");
             [alert show];
-            
-            // NOT GETTING CALLED!!!!!!!!!!
-            
         }
         else{
             [self plotPositions:results];
         }
-
-    
     }];
     
     
 }
 
 
-#pragma mark - IBActions
-
-
 -(void)plotPositions:(NSArray *)results {
     
-    // 2 - Loop through the array of places returned from the Google API.
+    // Loop through the array of places returned from the Google API.
+    
     for (int i=0; i<[results count]; i++) {
         //Retrieve the NSDictionary object in each index of the array.
         NSDictionary* places = [results objectAtIndex:i];
-        // 3 - There is a specific NSDictionary object that gives us the location info.
+        // There is a specific NSDictionary object that gives us the location info.
         NSDictionary *geo = [places objectForKey:@"geometry"];
         // Get the lat and long for the location.
         NSDictionary *loc = [geo objectForKey:@"location"];
-        // 4 - Get your name and address info for adding to a pin.
+        // Get your name and address info for adding to a pin.
         NSString *name=[places objectForKey:@"name"];
         NSString *vicinity=[places objectForKey:@"vicinity"];
         // Create a special variable to hold this coordinate info.
@@ -162,7 +153,7 @@
         //get the number for rating and convert to string format
         NSString *rating = [ratingn stringValue];
         
-        
+        //get the first type from the array of types
         NSArray *typeArray = [places objectForKey:@"types"];
         NSString *type = typeArray[0];
         
@@ -171,26 +162,51 @@
         NSString *url;
         if(photoRef){
             url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?photoreference=%@&key=%@&sensor=false&maxwidth=320", photoRef, @"AIzaSyDTxgToUPNt4Jm0yafQPaAXP_fiYXyMKiQ"];
-            
         }
         else{
             url = NULL;
         }
-        
-        //NSLog(@"%@",type);
-        //NSLog(@"%@",rating);
+
         
         //Create a new annotation.
         MapPin *placeObject = [[MapPin alloc] initWithName:name address:vicinity coordinate:placeCoord type:type rating:rating url:url];
+
+        //Loop through all pins already in the map and check if the new pin is already pinned.
+        // If its not pinned, then pin it
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self.mapView addAnnotation:placeObject];
-        });
+        int flag = 0;
+        for (MapPin *existingPin in self.mapView.annotations)
+        {
+            // If the pin is of MKUserLocation, then the pin is the CurrentLocation pin which should be ignored
+            if ([existingPin isMemberOfClass:[MKUserLocation class]]){
+                continue;
+            }
+            
+            if (([[existingPin.name lowercaseString] isEqualToString:[placeObject.name lowercaseString]]) &&
+                 (existingPin.coordinate.latitude == placeObject.coordinate.latitude) &&
+                 (existingPin.coordinate.longitude == placeObject.coordinate.longitude))
+                {
+                    flag = 1;
+                    break;
+                }
+
+        }
+        
+        if(flag==0){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.mapView addAnnotation:placeObject]; //this adds the pin to the map
+            });
+        }
+        else{
+            flag=0;
+        }
+        
         
     }
    
 }
 
+//gets called when a pin is added
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     
@@ -202,9 +218,12 @@
         MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (annotationView == nil) {
             annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+            //define the button type for detail disclosure of the annotation
             UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
             annotationView.rightCalloutAccessoryView = rightButton;
-        } else {
+            
+        }
+        else {
             annotationView.annotation = annotation;
         }
         
@@ -221,10 +240,8 @@
 
 
 
-
--(void)removeMapViewAnnotations{    
-
-    
+// This function removes all the pins except the user location
+-(void)removeMapViewAnnotations{
     NSInteger toRemoveCount = self.mapView.annotations.count;
     NSMutableArray *toRemove = [NSMutableArray arrayWithCapacity:toRemoveCount];
     for (id annotation in self.mapView.annotations)
@@ -234,11 +251,7 @@
     [self.mapView removeAnnotations:toRemove];
 }
 
-#pragma mark - Gesture recognizers
-/*
- Actions when a certain view is tapped. In this case we added this recognizer to the main view (self.view) so that the keyboard will dismiss when the screen is tapped
- */
-
+// called when the accessory control button is tapped
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view
 calloutAccessoryControlTapped:(UIControl *)control
@@ -262,9 +275,7 @@ calloutAccessoryControlTapped:(UIControl *)control
     }
 }
 
--(IBAction)screenTapped:(UITapGestureRecognizer *)sender {
-    NSLog(@"screentapped");
-}
+
 @end
 
 
