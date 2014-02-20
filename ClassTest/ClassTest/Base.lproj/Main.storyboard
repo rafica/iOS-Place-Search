@@ -8,7 +8,7 @@
         <scene sceneID="1kO-ch-J3h">
             <objects>
                 <viewController modalTransitionStyle="flipHorizontal" id="ZUq-oB-DCN" customClass="SearchViewController" sceneMemberID="viewController">
-                    <view key="view" tag="1" contentMode="scaleToFill" id="9Og-Vv-Y9q">
+                    <view key="view" tag="-3" contentMode="scaleToFill" id="9Og-Vv-Y9q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -35,14 +35,64 @@
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="23"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                             </textField>
+                            <label opaque="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lvr-lu-mcm">
+                                <rect key="frame" x="9" y="88" width="90" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hospital" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZSn-pB-Etn">
+                                <rect key="frame" x="157" y="131" width="90" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cafe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zcb-m7-iYG">
+                                <rect key="frame" x="9" y="445" width="90" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" tag="6" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jha-5z-AbZ">
+                                <rect key="frame" x="212" y="440" width="88" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Atm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DfT-zk-hlS">
+                                <rect key="frame" x="9" y="353" width="90" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L3v-hD-6Ew">
+                                <rect key="frame" x="157" y="308" width="90" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Police" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mt5-CA-bkD">
+                                <rect key="frame" x="9" y="177" width="90" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.91372555489999996" green="0.64705884459999996" blue="0.49019610879999997" alpha="1" colorSpace="deviceRGB"/>
                         <color key="tintColor" red="0.91372555489999996" green="0.49411767719999999" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="PUt-V6-4vT"/>
                     <connections>
+                        <outlet property="atmLabel" destination="DfT-zk-hlS" id="oDQ-mt-aEO"/>
                         <outlet property="background" destination="9Og-Vv-Y9q" id="syb-kX-7C8"/>
+                        <outlet property="barLabel" destination="lvr-lu-mcm" id="qgf-V7-J85"/>
+                        <outlet property="cafeLabel" destination="Zcb-m7-iYG" id="vFa-Ec-nbV"/>
+                        <outlet property="foodLabel" destination="Jha-5z-AbZ" id="wHn-Z0-lVK"/>
+                        <outlet property="hospitalLabel" destination="ZSn-pB-Etn" id="JxV-oU-vyS"/>
                         <outlet property="inputTextField" destination="fNO-hw-csr" id="W2n-WM-EQ2"/>
+                        <outlet property="policeLabel" destination="Mt5-CA-bkD" id="ZDD-dd-wHG"/>
+                        <outlet property="restaurantLabel" destination="L3v-hD-6Ew" id="uYt-5P-258"/>
                         <outlet property="searchButton" destination="3n9-ea-pRf" id="bZJ-kY-NIj"/>
                     </connections>
                 </viewController>

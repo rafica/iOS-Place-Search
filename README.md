@@ -1,6 +1,6 @@
 iOS-Place-Search
 ================
-An iPhone app capable of searching for a list of venues (restaurants, etc…) matching a keyword within an N mile radius.
+An iPhone app capable of searching for a list of venues (restaurants, etc) matching a keyword within an N mile radius.
 
 It has three screens. They are
 
@@ -8,7 +8,10 @@ Some of the screen shots are
 Home screen - Has a search text field. Enter your search term and hit 'Search' button. If no query is entered and search button is pressed, an alert messaage pops up and disappears automatically. It can handle any type of query (including spaces etc.)
       
       
-![Search page](/screenshots/Screen Shot 2014-02-19 at 2.50.55 PM.png)
+![Search page](/screenshots/Screen Shot 2014-02-19 at 7.35.22 PM.png)
+
+![Search page](/screenshots/Screen Shot 2014-02-19 at 7.35.08 PM.png)
+
       
 ![Search error](/screenshots/Screen Shot 2014-02-19 at 2.54.36 PM.png)
 

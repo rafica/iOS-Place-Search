@@ -13,6 +13,7 @@
 @interface SearchViewController (){
 
     UIAlertView *alert;
+    NSString *type;
 
 }
 
@@ -30,11 +31,108 @@
     return self;
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
+    if(touch.view.tag>=0){
+        
+            if(touch.view.tag == 0){
+                self.barLabel.backgroundColor = [UIColor colorWithRed:245.0/255.0 green:197.0/255.0 blue:166.0/255.0 alpha:1.0];
+                self.hospitalLabel.backgroundColor = [UIColor clearColor];
+                
+                self.policeLabel.backgroundColor = [UIColor clearColor];
+                self.atmLabel.backgroundColor = [UIColor clearColor];
+                self.restaurantLabel.backgroundColor = [UIColor clearColor];
+                self.cafeLabel.backgroundColor = [UIColor clearColor];
+                self.foodLabel.backgroundColor = [UIColor clearColor];
+                type = @"bar";
+            }
+            
+            else if (touch.view.tag==1){
+                self.hospitalLabel.backgroundColor = [UIColor colorWithRed:245.0/255.0 green:197.0/255.0 blue:166.0/255.0 alpha:1.0];
+                self.barLabel.backgroundColor = [UIColor clearColor];
+                
+                self.policeLabel.backgroundColor = [UIColor clearColor];
+                self.atmLabel.backgroundColor = [UIColor clearColor];
+                self.restaurantLabel.backgroundColor = [UIColor clearColor];
+                self.cafeLabel.backgroundColor = [UIColor clearColor];
+                self.foodLabel.backgroundColor = [UIColor clearColor];
+                type = @"hospital";
+            }
+            
+            else if(touch.view.tag==2){
+                self.policeLabel.backgroundColor = [UIColor colorWithRed:245.0/255.0 green:197.0/255.0 blue:166.0/255.0 alpha:1.0];
+                self.hospitalLabel.backgroundColor = [UIColor clearColor];
+                
+                self.barLabel.backgroundColor = [UIColor clearColor];
+                self.atmLabel.backgroundColor = [UIColor clearColor];
+                self.restaurantLabel.backgroundColor = [UIColor clearColor];
+                self.cafeLabel.backgroundColor = [UIColor clearColor];
+                self.foodLabel.backgroundColor = [UIColor clearColor];
+                type = @"police";
+            }
+            
+            else if(touch.view.tag==3){
+                self.atmLabel.backgroundColor = [UIColor colorWithRed:245.0/255.0 green:197.0/255.0 blue:166.0/255.0 alpha:1.0];
+                self.hospitalLabel.backgroundColor = [UIColor clearColor];
+                
+                self.policeLabel.backgroundColor = [UIColor clearColor];
+                self.barLabel.backgroundColor = [UIColor clearColor];
+                self.restaurantLabel.backgroundColor = [UIColor clearColor];
+                self.cafeLabel.backgroundColor = [UIColor clearColor];
+                self.foodLabel.backgroundColor = [UIColor clearColor];
+                type = @"atm";
+            }
+            else if(touch.view.tag==4){
+                self.restaurantLabel.backgroundColor = [UIColor colorWithRed:245.0/255.0 green:197.0/255.0 blue:166.0/255.0 alpha:1.0];
+                self.hospitalLabel.backgroundColor = [UIColor clearColor];
+                
+                self.policeLabel.backgroundColor = [UIColor clearColor];
+                self.atmLabel.backgroundColor = [UIColor clearColor];
+                self.barLabel.backgroundColor = [UIColor clearColor];
+                self.cafeLabel.backgroundColor = [UIColor clearColor];
+                self.foodLabel.backgroundColor = [UIColor clearColor];
+                type = @"restaurant";
+            }
+            else if(touch.view.tag==5){
+                self.cafeLabel.backgroundColor = [UIColor colorWithRed:245.0/255.0 green:197.0/255.0 blue:166.0/255.0 alpha:1.0];
+                self.hospitalLabel.backgroundColor = [UIColor clearColor];
+                
+                self.policeLabel.backgroundColor = [UIColor clearColor];
+                self.atmLabel.backgroundColor = [UIColor clearColor];
+                self.restaurantLabel.backgroundColor = [UIColor clearColor];
+                self.barLabel.backgroundColor = [UIColor clearColor];
+                self.foodLabel.backgroundColor = [UIColor clearColor];
+                type = @"cafe";
+            }
+            else if(touch.view.tag==6){
+                self.foodLabel.backgroundColor = [UIColor colorWithRed:245.0/255.0 green:197.0/255.0 blue:166.0/255.0 alpha:1.0];
+                self.hospitalLabel.backgroundColor = [UIColor clearColor];
+                
+                self.policeLabel.backgroundColor = [UIColor clearColor];
+                self.atmLabel.backgroundColor = [UIColor clearColor];
+                self.restaurantLabel.backgroundColor = [UIColor clearColor];
+                self.cafeLabel.backgroundColor = [UIColor clearColor];
+                self.barLabel.backgroundColor = [UIColor clearColor];
+                type = @"food";
+            }
+        
+
+    }
+    
+  
+    
+}
+
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-
+    type = @"";
+    
+    
     // Input field color and corner radius
     [self.inputTextField.layer setCornerRadius:10.0f];
     [self.inputTextField setBackgroundColor:[UIColor colorWithRed:191.0/255.0 green:157.0/255.0 blue:145.0/255.0 alpha:1.0]];
@@ -98,6 +196,7 @@
 }
 
 
+
 -(void)setBgColorForButton:(UIButton*)sender
 {
     [sender setBackgroundColor:[UIColor colorWithRed:195.0/255.0 green:131.0/255.0 blue:107.0/255.0 alpha:1.0]];
@@ -155,6 +254,10 @@
     [self.inputTextField.text stringByAddingPercentEscapesUsingEncoding: NSASCIIStringEncoding];
     
     mapObj.place = escapedUrlString;
+    
+    mapObj.queryType = type;
+    
+    
 }
 
 -(void)dismissKeyboard{

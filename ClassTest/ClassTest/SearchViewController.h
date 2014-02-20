@@ -14,5 +14,17 @@
 
 @property (strong, nonatomic) IBOutlet UIView *background;
 @property (weak, nonatomic) IBOutlet UIButton *searchButton;
+@property (weak, nonatomic) IBOutlet UILabel *barLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *hospitalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *policeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *atmLabel;
+@property (weak, nonatomic) IBOutlet UILabel *restaurantLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *cafeLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *foodLabel;
+
+
+-(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event;
 @end

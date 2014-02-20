@@ -2,7 +2,7 @@
 //  COMSBaseViewController.m
 //  ClassTest
 //
-//  Created by William Falcon on 1/31/14.
+//  Created by rafica on 2/5/14.
 //  Copyright (c) 2014 COMS. All rights reserved.
 //
 
@@ -115,7 +115,8 @@
     
     //query server for results
  
-    [GoogleMapManager nearestVenuesForLatLong:coord withinRadius:self.range forQuery:self.place queryType:@"" googleMapsAPIKey:@"AIzaSyDTxgToUPNt4Jm0yafQPaAXP_fiYXyMKiQ" searchCompletion:^(NSMutableArray *results) {
+    NSLog(@"%@", self.queryType);
+    [GoogleMapManager nearestVenuesForLatLong:coord withinRadius:self.range forQuery:self.place queryType:self.queryType googleMapsAPIKey:@"AIzaSyDTxgToUPNt4Jm0yafQPaAXP_fiYXyMKiQ" searchCompletion:^(NSMutableArray *results) {
         //if no results show Alert. else plot in the map
         if(!results||!results.count){
             alert= [[UIAlertView alloc] initWithTitle:@"No nearby places" message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

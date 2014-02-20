@@ -2,7 +2,7 @@
 //  COMSBaseViewController.h
 //  ClassTest
 //
-//  Created by William Falcon on 1/31/14.
+//  Created by rafica on 2/5/14.
 //  Copyright (c) 2014 COMS. All rights reserved.
 //
 
@@ -33,4 +33,5 @@
 @property (weak, nonatomic) IBOutlet UISlider *rangeSlider;
 @property (weak, nonatomic) IBOutlet UILabel *labelRange;
 
+@property (weak, nonatomic) NSString *queryType;
 @end

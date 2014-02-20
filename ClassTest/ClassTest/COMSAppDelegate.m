@@ -2,7 +2,7 @@
 //  COMSAppDelegate.m
 //  ClassTest
 //
-//  Created by William Falcon on 1/31/14.
+//  Created by rafica on 1/31/14.
 //  Copyright (c) 2014 COMS. All rights reserved.
 //
 
