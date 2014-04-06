@@ -12,6 +12,7 @@
 		218D9D3218A6F0FC000A1796 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D3118A6F0FC000A1796 /* CoreData.framework */; };
 		218D9D3418A6F192000A1796 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D3318A6F192000A1796 /* CoreLocation.framework */; };
 		218D9D3618A6F1B7000A1796 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D3518A6F1B7000A1796 /* MapKit.framework */; };
+		218E9C1A18ED03B400431A2E /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 218E9C1918ED03B400431A2E /* ListViewController.m */; };
 		218EBED218A8380200D1D996 /* MapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 218EBED118A8380200D1D996 /* MapPin.m */; };
 		218F14C218AEE7A400AF0FB3 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 218F14C118AEE7A400AF0FB3 /* DetailViewController.m */; };
 		218F5C5E18B3EBA1002EA952 /* COMSMapManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218F5C5D18B3EBA1002EA952 /* COMSMapManager.framework */; };
@@ -45,6 +46,8 @@
 		218D9D3118A6F0FC000A1796 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		218D9D3318A6F192000A1796 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		218D9D3518A6F1B7000A1796 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		218E9C1818ED03B400431A2E /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		218E9C1918ED03B400431A2E /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		218EBED018A8380200D1D996 /* MapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapPin.h; sourceTree = "<group>"; };
 		218EBED118A8380200D1D996 /* MapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapPin.m; sourceTree = "<group>"; };
 		218F14C018AEE7A400AF0FB3 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 				21910EC018A8C60100F2F827 /* SearchViewController.m */,
 				218F14C018AEE7A400AF0FB3 /* DetailViewController.h */,
 				218F14C118AEE7A400AF0FB3 /* DetailViewController.m */,
+				218E9C1818ED03B400431A2E /* ListViewController.h */,
+				218E9C1918ED03B400431A2E /* ListViewController.m */,
 			);
 			path = ClassTest;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 			files = (
 				EE32D1FB189C678C00E2DEA5 /* ClassTest.xcdatamodeld in Sources */,
 				218EBED218A8380200D1D996 /* MapPin.m in Sources */,
+				218E9C1A18ED03B400431A2E /* ListViewController.m in Sources */,
 				EE32D1F5189C678C00E2DEA5 /* COMSAppDelegate.m in Sources */,
 				EE32D1F1189C678C00E2DEA5 /* main.m in Sources */,
 				21910EC118A8C60100F2F827 /* SearchViewController.m in Sources */,

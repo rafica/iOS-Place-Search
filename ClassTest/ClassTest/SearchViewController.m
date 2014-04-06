@@ -17,7 +17,6 @@
 
 }
 
-
 @end
 
 @implementation SearchViewController
@@ -115,14 +114,9 @@
                 self.barLabel.backgroundColor = [UIColor clearColor];
                 type = @"food";
             }
-        
-
     }
     
-  
-    
 }
-
 
 
 

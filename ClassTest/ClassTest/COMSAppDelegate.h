@@ -10,6 +10,7 @@
 
 @interface COMSAppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (retain, nonatomic) NSMutableArray *sharedProperty;
 @property (strong, nonatomic) UIWindow *window;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;

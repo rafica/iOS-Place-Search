@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "MapPin.h"
+#import "COMSAppDelegate.h"
 
 //import the class where the CLLocationManagerDelegate protocol is implemented
 @import CoreLocation;
@@ -18,6 +19,7 @@
 
 @interface COMSBaseViewController : UIViewController<CLLocationManagerDelegate,MKMapViewDelegate>
 {
+    COMSAppDelegate *appDelegate;
     BOOL firstLaunch;
     int currenDist;
     CLLocationCoordinate2D currentCentre;

@@ -12,6 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "DetailViewController.h"
 #import <MapKit/MapKit.h>
+#import "ListViewController.h"
 
 @interface COMSBaseViewController (){
     UIAlertView *alert;
@@ -48,8 +49,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-
+    appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate.sharedProperty removeAllObjects];
     
     [[UIBarButtonItem appearance] setTintColor:[UIColor redColor]];
     
@@ -123,7 +124,8 @@
             [alert show];
         }
         else{
-            [self plotPositions:results];
+            [self plotPositions:results location:loc];
+            
         }
     }];
     
@@ -131,17 +133,23 @@
 }
 
 
--(void)plotPositions:(NSArray *)results {
+-(void)plotPositions:(NSMutableArray *)results location:(CLLocation *)currentloc{
     
     // Loop through the array of places returned from the Google API.
+
+    
+    NSMutableArray *changedResults = [[NSMutableArray alloc]init];
+    //NSLog(@"%@",changedResults);
+    
+    NSLog(@"plot");
     
     for (int i=0; i<[results count]; i++) {
         //Retrieve the NSDictionary object in each index of the array.
-        NSDictionary* places = [results objectAtIndex:i];
+        NSMutableDictionary* places = [NSMutableDictionary dictionaryWithDictionary:[results objectAtIndex:i]];
         // There is a specific NSDictionary object that gives us the location info.
-        NSDictionary *geo = [places objectForKey:@"geometry"];
+        NSMutableDictionary *geo = [places objectForKey:@"geometry"];
         // Get the lat and long for the location.
-        NSDictionary *loc = [geo objectForKey:@"location"];
+        NSMutableDictionary *loc = [geo objectForKey:@"location"];
         // Get your name and address info for adding to a pin.
         NSString *name=[places objectForKey:@"name"];
         NSString *vicinity=[places objectForKey:@"vicinity"];
@@ -150,6 +158,17 @@
         // Set the lat and long.
         placeCoord.latitude=[[loc objectForKey:@"lat"] doubleValue];
         placeCoord.longitude=[[loc objectForKey:@"lng"] doubleValue];
+        
+        CLLocation *placeLoc = [[CLLocation alloc]initWithLatitude:placeCoord.latitude longitude:placeCoord.longitude];
+        CLLocationDistance meters = [placeLoc distanceFromLocation:currentloc];
+        
+        
+        NSNumber *distance = [[NSNumber alloc]initWithDouble:meters];
+        [places setObject:distance forKey:@"distance"];
+        //NSLog(@"%@",places);
+        [changedResults addObject:places];
+       // NSLog(@"%@",listObj.sortedResults);
+        
         NSNumber *ratingn = [places objectForKey:@"rating"];
         //get the number for rating and convert to string format
         NSString *rating = [ratingn stringValue];
@@ -204,7 +223,15 @@
         
         
     }
+    
    
+    NSSortDescriptor *aSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distance" ascending:YES];
+    [changedResults sortUsingDescriptors:[NSArray arrayWithObjects:aSortDescriptor, nil]];
+    
+
+    appDelegate.sharedProperty = changedResults;
+    NSLog(@"%@",changedResults);
+    NSLog(@"results changed");
 }
 
 //gets called when a pin is added
