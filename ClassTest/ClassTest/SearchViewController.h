@@ -24,7 +24,17 @@
 @property (weak, nonatomic) IBOutlet UILabel *cafeLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *foodLabel;
+@property (weak, nonatomic) IBOutlet UIButton *helpButton;
 
+@property(nonatomic) UIDynamicAnimator *animator;
+@property(nonatomic) UIGravityBehavior *gravity;
+@property(nonatomic) UICollisionBehavior *collision;
 
 -(void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event;
+
+- (IBAction)mainButtonPressed:(UIButton *)sender;
+
+- (IBAction)buttonDragged:(UIPanGestureRecognizer *)sender;
+
 @end
+

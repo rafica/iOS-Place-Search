@@ -125,6 +125,7 @@
         }
         else{
             [self plotPositions:results location:loc];
+            NSLog(@"%@", results);
             
         }
     }];
@@ -230,8 +231,7 @@
     
 
     appDelegate.sharedProperty = changedResults;
-    NSLog(@"%@",changedResults);
-    NSLog(@"results changed");
+
 }
 
 //gets called when a pin is added

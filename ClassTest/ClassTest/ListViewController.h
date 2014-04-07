@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "COMSAppDelegate.h"
 #import "DetailViewController.h"
+#import <CoreData/CoreData.h>
 
 @interface ListViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>{
     COMSAppDelegate *appDelegate;

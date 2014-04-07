@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		215A70DD18F15BCE00AE95C2 /* FavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 215A70DC18F15BCE00AE95C2 /* FavoriteViewController.m */; };
 		218D9D2E18A6F0AF000A1796 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D2D18A6F0AF000A1796 /* UIKit.framework */; };
 		218D9D3018A6F0F2000A1796 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D2F18A6F0F2000A1796 /* Foundation.framework */; };
 		218D9D3218A6F0FC000A1796 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 218D9D3118A6F0FC000A1796 /* CoreData.framework */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		215A70DB18F15BCE00AE95C2 /* FavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteViewController.h; sourceTree = "<group>"; };
+		215A70DC18F15BCE00AE95C2 /* FavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteViewController.m; sourceTree = "<group>"; };
 		218D9D2D18A6F0AF000A1796 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		218D9D2F18A6F0F2000A1796 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		218D9D3118A6F0FC000A1796 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -154,6 +157,8 @@
 				218F14C118AEE7A400AF0FB3 /* DetailViewController.m */,
 				218E9C1818ED03B400431A2E /* ListViewController.h */,
 				218E9C1918ED03B400431A2E /* ListViewController.m */,
+				215A70DB18F15BCE00AE95C2 /* FavoriteViewController.h */,
+				215A70DC18F15BCE00AE95C2 /* FavoriteViewController.m */,
 			);
 			path = ClassTest;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				215A70DD18F15BCE00AE95C2 /* FavoriteViewController.m in Sources */,
 				EE32D1FB189C678C00E2DEA5 /* ClassTest.xcdatamodeld in Sources */,
 				218EBED218A8380200D1D996 /* MapPin.m in Sources */,
 				218E9C1A18ED03B400431A2E /* ListViewController.m in Sources */,

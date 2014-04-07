@@ -118,11 +118,67 @@
     
 }
 
-
+- (IBAction)mainButtonPressed:(UIButton *)sender {
+    
+    UIAlertView *alert1 = [[UIAlertView alloc]initWithTitle:@"Help" message:@"Tab1:Search, Tab2:List view, Tab3:Favorites" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+    [alert1 show];
+    
+}
+- (IBAction)buttonDragged:(UIPanGestureRecognizer *)sender {
+    
+    CGPoint translation = [sender translationInView:self.view.window];
+    
+    sender.view.center = CGPointMake(sender.view.center.x+translation.x, sender.view.center.y+translation.y);
+    
+    [sender setTranslation:CGPointMake(0, 0) inView:self.view];
+    
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
+    //modify button
+    [self.helpButton.layer setCornerRadius:self.helpButton.frame.size.width/2];
+    [self.helpButton.imageView.layer setCornerRadius:self.helpButton.frame.size.width/2];
+    
+    [self.helpButton.layer setBorderColor:[[UIColor blackColor]CGColor]];
+    
+    [self.helpButton.layer setBorderWidth:5.0f];
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(buttonDragged:)];
+    
+    [self.helpButton addGestureRecognizer:pan];
+    
+    self.animator = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
+    self.gravity = [[UIGravityBehavior alloc]init];
+    [self.gravity setAngle:M_PI/2 magnitude:3];
+    [self.animator addBehavior:self.gravity];
+    
+    //add collision
+    self.collision = [[UICollisionBehavior alloc]initWithItems:@[self.helpButton]];
+    
+    [self.animator addBehavior:self.collision];
+    
+    //launches something on delay
+    double delayInSeconds = 2.0;
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+
+        [self.gravity addItem:self.helpButton];
+    });
+    self.collision.translatesReferenceBoundsIntoBoundary = YES;
+    
+
+    
+    
+    
+    
+    
+    
     
     type = @"";
     

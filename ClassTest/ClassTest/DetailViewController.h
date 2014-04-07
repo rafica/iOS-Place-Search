@@ -25,4 +25,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *typeDetail;
 
 
+
 @end
